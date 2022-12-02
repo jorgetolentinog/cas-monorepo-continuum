@@ -1,5 +1,5 @@
 {
-  "name": "@medicap-replicator/message",
+  "name": "@cas-medicap-replicator/message",
   "version": "0.0.0",
   "scripts": {
     "start": "npx serverless offline start",

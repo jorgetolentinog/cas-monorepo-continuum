@@ -1,5 +1,5 @@
 {
-  "name": "@medicap-replicator/resource",
+  "name": "@cas-medicap-replicator/resource",
   "version": "0.0.0",
   "scripts": {
     "deploy": "npx serverless deploy",
