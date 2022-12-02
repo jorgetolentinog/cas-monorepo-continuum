@@ -12,12 +12,13 @@ import { DynamoDBCalendarRepository } from '@/infrastructure/adapter/persistence
 import { DynamoDBExceptionRepository } from '@/infrastructure/adapter/persistence/DynamoDBExceptionRepository'
 import { MockEventBus } from '@/infrastructure/adapter/eventbus/MockEventBus'
 import { EventBridgeEventBus } from '../adapter/eventbus/EventBridgeEventBus'
-import { Logger } from '@/domain/ports/Logger'
-import { SimpleLogger } from '../adapter/logger/SimpleLogger'
-import { StructuredLogger } from '../adapter/logger/StructuredLogger'
 import { Metrics } from '@/domain/ports/Metrics'
 import { MockMetrics } from '../adapter/metrics/MockMetrics'
 import { AwsMetrics } from '../adapter/metrics/AwsMetrics'
+
+import { Logger } from '@package/logger'
+import { SimpleLogger } from '@package/logger.simple'
+import { StructuredLogger } from '@package/logger.structured'
 
 container.register<BookingRepository>(
   'BookingRepository',
