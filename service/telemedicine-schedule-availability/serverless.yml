@@ -1,0 +1,136 @@
+service: cas-agd-tlmdcn-availability
+useDotenv: true
+
+plugins:
+  - "@nearst/serverless-dynalite"
+  - serverless-webpack
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  environment:
+    SERVICE_NAME: ${self:service}
+    DYNAMODB_TABLE: ${self:service}-${sls:stage}-table
+  apiGateway:
+    restApiId: ${self:custom.cas-agd-tlmdcn.ApiGatewayRestApiId}
+    restApiRootResourceId: ${self:custom.cas-agd-tlmdcn.ApiGatewayRestApiRootResourceId}
+  tracing:
+    lambda: true
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+            - dynamodb:BatchWriteItem
+          Resource: "*"
+
+custom:
+  cas-agd-tlmdcn:
+    ApiGatewayRestApiId:
+      "Fn::ImportValue": cas-agd-tlmdcn-${sls:stage}-ApiGatewayRestApiId
+    ApiGatewayRestApiRootResourceId:
+      "Fn::ImportValue": cas-agd-tlmdcn-${sls:stage}-ApiGatewayRestApiRootResourceId
+  cas-medicap:
+    EventBusName:
+      "Fn::ImportValue": cas-medicap-${sls:stage}-EventBusName
+
+functions:
+  httpAvailabilityProfessionalGet:
+    handler: ./src/infrastructure/lambda/http-availability-professional-get/index.handler
+    events:
+      - http:
+          path: /availability/professional/{professionalId}
+          method: get
+          cors: true
+
+  eventMedicapBookingSynced:
+    handler: ./src/infrastructure/lambda/event-medicap-booking-synced/index.handler
+    events:
+      - eventBridge:
+          eventBus: ${self:custom.cas-medicap.EventBusName}
+          pattern:
+            source:
+              - cas-medicap-sync
+            detail-type:
+              - booking.updated
+
+  eventMedicapPreBookingSynced:
+    handler: ./src/infrastructure/lambda/event-medicap-pre-booking-synced/index.handler
+    events:
+      - eventBridge:
+          eventBus: ${self:custom.cas-medicap.EventBusName}
+          pattern:
+            source:
+              - cas-medicap-sync
+            detail-type:
+              - pre-booking.updated
+
+  eventMedicapReleaseSynced:
+    handler: ./src/infrastructure/lambda/event-medicap-release-synced/index.handler
+    events:
+      - eventBridge:
+          eventBus: ${self:custom.cas-medicap.EventBusName}
+          pattern:
+            source:
+              - cas-medicap-sync
+            detail-type:
+              - release.updated
+
+  eventMedicapCalendarSynced:
+    handler: ./src/infrastructure/lambda/event-medicap-calendar-synced/index.handler
+    events:
+      - eventBridge:
+          eventBus: ${self:custom.cas-medicap.EventBusName}
+          pattern:
+            source:
+              - cas-medicap-sync
+            detail-type:
+              - calendar.updated
+
+  eventMedicapExceptionSynced:
+    handler: ./src/infrastructure/lambda/event-medicap-exception-synced/index.handler
+    events:
+      - eventBridge:
+          eventBus: ${self:custom.cas-medicap.EventBusName}
+          pattern:
+            source:
+              - cas-medicap-sync
+            detail-type:
+              - exception.updated
+
+resources:
+  Resources:
+    DynamoDBTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: _pk
+            AttributeType: S
+          - AttributeName: _sk
+            AttributeType: S
+          - AttributeName: _gsi1pk
+            AttributeType: S
+          - AttributeName: _gsi1sk
+            AttributeType: S
+        KeySchema:
+          - AttributeName: _pk
+            KeyType: HASH
+          - AttributeName: _sk
+            KeyType: RANGE
+        GlobalSecondaryIndexes:
+          - IndexName: gsi1
+            KeySchema:
+              - AttributeName: _gsi1pk
+                KeyType: HASH
+              - AttributeName: _gsi1sk
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}

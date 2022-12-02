@@ -1,0 +1,11 @@
+{
+  "name": "telemedicine-schedule-resource",
+  "version": "0.0.0",
+  "scripts": {
+    "deploy": "npx serverless deploy",
+    "remove": "npx serverless remove"
+  },
+  "devDependencies": {
+    "serverless": "^3.22.0"
+  }
+}
