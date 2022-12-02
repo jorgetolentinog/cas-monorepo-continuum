@@ -50,8 +50,18 @@ export class Handler implements EventBridgeWrapperHandler {
         professionalId: z.string(),
         blockDurationInMinutes: z.number(),
         conditionOfService: z.object({
-          minAge: z.number().optional(),
-          maxAge: z.number().optional(),
+          minAge: z
+            .object({
+              year: z.number(),
+              month: z.number(),
+            })
+            .optional(),
+          maxAge: z
+            .object({
+              year: z.number(),
+              month: z.number(),
+            })
+            .optional(),
           gender: z.enum(["F", "M"]).optional(),
         }),
         days: z.array(

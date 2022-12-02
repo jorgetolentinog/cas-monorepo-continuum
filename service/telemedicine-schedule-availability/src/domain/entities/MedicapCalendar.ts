@@ -11,8 +11,14 @@ export interface MedicapCalendar {
   professionalId: string;
   blockDurationInMinutes: number;
   conditionOfService: {
-    minAge?: number;
-    maxAge?: number;
+    minAge?: {
+      year: number;
+      month: number;
+    };
+    maxAge?: {
+      year: number;
+      month: number;
+    };
     gender?: "F" | "M";
   };
   days: Array<{

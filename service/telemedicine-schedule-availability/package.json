@@ -1,5 +1,5 @@
 {
-  "name": "cas-agd-tlmdcn-availability",
+  "name": "telemedicine-schedule-availability",
   "version": "0.0.0",
   "scripts": {
     "start": "npx serverless offline start",

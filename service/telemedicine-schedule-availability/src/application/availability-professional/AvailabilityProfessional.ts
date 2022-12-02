@@ -325,8 +325,14 @@ export type AvailabilityProfessionalResponse = {
   medicalAreaIds: string[];
   interestAreaIds: string[];
   conditionOfService: {
-    minAge?: number;
-    maxAge?: number;
+    minAge?: {
+      year: number;
+      month: number;
+    };
+    maxAge?: {
+      year: number;
+      month: number;
+    };
     gender?: string;
   };
 }[];
