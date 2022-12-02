@@ -1,5 +1,5 @@
 {
-  "name": "telemedicine-schedule-resource",
+  "name": "@telemedicine-schedule/resource",
   "version": "0.0.0",
   "scripts": {
     "deploy": "npx serverless deploy",
