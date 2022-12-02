@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { injectable } from 'tsyringe'
 import { APIGatewayEvent } from 'aws-lambda'
-import { ValidationError } from '@/domain/error/ValidationError'
+import { ValidationError } from '@package/error'
 import { ApiGatewayWrapperHandler } from '../wrapper/ApiGatewayWrapper'
 import { BookingRoute } from './BookingRoute'
 import { PreBookingRoute } from './PreBookingRoute'

@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { APIGatewayEvent } from 'aws-lambda'
 import { SyncCalendar } from '@/application/SyncCalendar'
-import { ValidationError } from '@/domain/error/ValidationError'
+import { ValidationError } from '@package/error'
 import { injectable } from 'tsyringe'
 import { parse as parseDate, format as formatDate } from 'date-fns'
 

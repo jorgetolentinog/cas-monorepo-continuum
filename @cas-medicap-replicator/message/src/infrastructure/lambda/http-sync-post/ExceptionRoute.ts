@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { APIGatewayEvent } from 'aws-lambda'
 import { injectable } from 'tsyringe'
 import { SyncException } from '@/application/SyncException'
-import { ValidationError } from '@/domain/error/ValidationError'
+import { ValidationError } from '@package/error'
 import { parse as parseDate, format as formatDate } from 'date-fns'
 
 @injectable()

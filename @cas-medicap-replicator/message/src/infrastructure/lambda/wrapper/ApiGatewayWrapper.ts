@@ -1,6 +1,6 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda'
 import { inject, injectable } from 'tsyringe'
-import { ValidationError } from '@/domain/error/ValidationError'
+import { ValidationError } from '@package/error'
 import { Logger } from '@/domain/ports/Logger'
 
 @injectable()

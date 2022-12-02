@@ -4,7 +4,7 @@ servers:
   - url: https://e4r8k3c1p3.execute-api.us-east-1.amazonaws.com/dev
 info:
   version: '0.0.0'
-  title: cas-medicap
+  title: cas-medicap-replicador
 tags:
   - name: message
     description: replicador
