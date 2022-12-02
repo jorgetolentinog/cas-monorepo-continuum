@@ -10,6 +10,7 @@
     "remove": "turbo run remove"
   },
   "workspaces": [
+    "@medicap-replicator/*",
     "service/**"
   ],
   "devDependencies": {
