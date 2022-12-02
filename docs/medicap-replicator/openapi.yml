@@ -1,0 +1,164 @@
+openapi: 3.0.0
+servers:
+  - url: http://localhost:3000/dev
+  - url: https://e4r8k3c1p3.execute-api.us-east-1.amazonaws.com/dev
+info:
+  version: '0.0.0'
+  title: cas-medicap
+tags:
+  - name: message
+    description: replicador
+paths:
+  /message:
+    post:
+      tags:
+        - message
+      summary: recibe mensajes de medicap
+      responses:
+        '204':
+          description: 'mensaje recibido'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SyncPostRequest'
+            examples:
+              preBooking:
+                $ref: '#/components/examples/MessageMedicapPreBookingExample'
+              booking:
+                $ref: '#/components/examples/MessageMedicaBookingExample'
+              release:
+                $ref: '#/components/examples/MessageMedicapReleaseExample'
+              calendar:
+                $ref: '#/components/examples/MessageMedicapCalendarExample'
+              exception:
+                $ref: '#/components/examples/MessageMedicapExceptionExample'
+components:
+  schemas:
+    SyncPostRequest:
+      description: formato de mensaje
+      type: object
+      properties:
+        type:
+          type: string
+        data:
+          type: object
+  examples:
+    MessageMedicapPreBookingExample:
+      summary: mensaje de pre-reserva
+      value:
+        type: PSV
+        data:
+          indice: 8191712
+          fecha: '08/09/2022'
+          hora: '17:00'
+          codigoEmpresa: 2
+          codigoSucursal: 11
+          codigoServicio: 265
+          indiceCalendario: 28746
+          ppnProfesional: 334763
+          duracionBloques: 30
+          vigencia: true
+
+    MessageMedicaBookingExample:
+      summary: mensaje de reserva
+      value:
+        type: RSV
+        data:
+          indice: '8191712'
+          fecha: '08/09/2022'
+          hora: '15:30'
+          codigoEmpresa: '2'
+          codigoSucursal: '11'
+          codigoServicio: '265'
+          indiceCalendario: '30660'
+          ppnProfesional: '3178'
+          ppnPaciente: '4019659'
+          duracionBloques: 30
+          vigencia: true
+
+    MessageMedicapReleaseExample:
+      summary: mensaje de liberación
+      value:
+        type: LBR
+        data:
+          indice: 838
+          fecha: '15/09/2020'
+          hora: '14:00'
+          duracionBloque: 30
+          profesional: '2549'
+          codigoEmpresa: 2
+          codigoSucursal: '11'
+          codigoServicio: '265'
+          indiceCalendario: '21848'
+          vigencia: true
+
+    MessageMedicapCalendarExample:
+      summary: mensaje de calendario
+      value:
+        type: CLD
+        data:
+          indice: 28173
+          desde: '01/09/2022'
+          hasta: '30/09/2022'
+          vigencia: true
+          codigoEmpresa: '2'
+          codigoSucursal: '11'
+          codigoServicio: '265'
+          codigosAreasMedicas:
+            - '204'
+            - '78'
+          codigosAreasDeInteres:
+            - '611'
+            - '612'
+          ppnProfesional: '2048'
+          duracionBloques: 25
+          condicionesAtencionServicio:
+            edadMaximaAtencion: '-1'
+            edadMinimaAtencion: '-1'
+            generoAtencion: ''
+          dias:
+            - diaSemana: '1'
+              bloques:
+                - - '8:00'
+                  - '9:00'
+                - - '9:00'
+                  - '10:00'
+            - diaSemana: '3'
+              bloques:
+                - - '12:00'
+                  - '13:00'
+                - - '13:00'
+                  - '14:00'
+
+    MessageMedicapExceptionExample:
+      summary: mensaje de excepción
+      value:
+        type: EXC
+        data:
+          indice: 35407
+          desde: '01/09/2022'
+          hasta: '30/09/2022'
+          vigencia: true
+          recurrencia: 'S'
+          repetirCada: '1'
+          profesionales:
+            - 2048
+          servicios:
+            - '265'
+          diaMes:
+          diaSemana:
+          numeroSemana:
+          dias:
+            - diaSemana: '1'
+              bloques:
+                - - '8:00'
+                  - '9:00'
+                - - '10:00'
+                  - '12:00'
+            - diaSemana: '3'
+              bloques:
+                - - '8:00'
+                  - '9:00'
+                - - '10:00'
+                  - '12:00'

@@ -1,0 +1,282 @@
+asyncapi: 2.5.0
+info:
+  title: cas-medicap
+  version: 0.0.0
+defaultContentType: application/json
+channels:
+  cas-medicap-sync.booking.updated:
+    subscribe:
+      message:
+        $ref: '#/components/messages/BookingUpdated'
+  cas-medicap-sync.pre-booking.updated:
+    subscribe:
+      message:
+        $ref: '#/components/messages/PreBookingUpdated'
+  cas-medicap-sync.release.updated:
+    subscribe:
+      message:
+        $ref: '#/components/messages/ReleaseUpdated'
+  cas-medicap-sync.calendar.updated:
+    subscribe:
+      message:
+        $ref: '#/components/messages/CalendarUpdated'
+  cas-medicap-sync.exception.updated:
+    subscribe:
+      message:
+        $ref: '#/components/messages/ExceptionUpdated'
+components:
+  messages:
+    PreBookingUpdated:
+      name: PreBookingUpdated
+      payload:
+        type: object
+        properties:
+          id:
+            type: string
+            example: '838'
+          date:
+            type: string
+            example: '2020-09-15T14:00:00'
+          companyId:
+            type: string
+            example: '02'
+          officeId:
+            type: string
+            example: '11'
+          serviceId:
+            type: string
+            example: '265'
+          professionalId:
+            type: string
+            example: '2549'
+          calendarId:
+            type: string
+            example: '111'
+          blockDurationInMinutes:
+            type: number
+            example: 30
+          isEnabled:
+            type: boolean
+            example: true
+          createdAt:
+            type: string
+            example: '2022-09-09T03:28:27.517Z'
+          updatedAt:
+            type: string
+            example: '2022-09-09T03:29:28.199Z'
+    BookingUpdated:
+      name: BookingUpdated
+      payload:
+        type: object
+        properties:
+          id:
+            type: string
+            example: '838'
+          date:
+            type: string
+            example: '2020-09-15T14:00:00'
+          companyId:
+            type: string
+            example: '02'
+          officeId:
+            type: string
+            example: '11'
+          serviceId:
+            type: string
+            example: '265'
+          professionalId:
+            type: string
+            example: '2549'
+          patientId:
+            type: string
+            example: '111'
+          calendarId:
+            type: string
+            example: '111'
+          blockDurationInMinutes:
+            type: number
+            example: 30
+          isEnabled:
+            type: boolean
+            example: true
+          createdAt:
+            type: string
+            example: '2022-09-09T03:28:27.517Z'
+          updatedAt:
+            type: string
+            example: '2022-09-09T03:29:28.199Z'
+    ReleaseUpdated:
+      name: ReleaseUpdated
+      payload:
+        type: object
+        properties:
+          id:
+            type: string
+            example: '838'
+          date:
+            type: string
+            example: '2020-09-15T14:00:00'
+          blockDurationInMinutes:
+            type: number
+            example: 30
+          professionalId:
+            type: string
+            example: '2549'
+          serviceId:
+            type: string
+            example: '265'
+          isEnabled:
+            type: boolean
+            example: true
+          createdAt:
+            type: string
+            example: '2022-09-09T03:28:27.517Z'
+          updatedAt:
+            type: string
+            example: '2022-09-09T03:29:28.199Z'
+    CalendarUpdated:
+      name: CalendarUpdated
+      payload:
+        type: object
+        properties:
+          id:
+            type: string
+            example: '838'
+          startDate:
+            type: string
+            example: '01/09/2022'
+          endDate:
+            type: string
+            example: '30/09/2022'
+          isEnabled:
+            type: boolean
+            example: true
+          companyId:
+            type: string
+            example: '02'
+          officeId:
+            type: string
+            example: '11'
+          serviceId:
+            type: string
+            example: '265'
+          medicalAreaIds:
+            type: array
+            items:
+              type: string
+              example: '204'
+          interestAreaIds:
+            type: array
+            items:
+              type: string
+              example: '612'
+          professionalId:
+            type: string
+            example: '2048'
+          blockDurationInMinutes:
+            type: number
+            example: 30
+          conditionOfService:
+            type: object
+            properties:
+              minAge:
+                type: number
+                example: 18
+              maxAge:
+                type: number
+                example: 65
+              gender:
+                type: string
+                example: 'M'
+          days:
+            type: array
+            items:
+              type: object
+              properties:
+                dayOfWeek:
+                  type: number
+                  example: 1
+                blocks:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      startTime:
+                        type: string
+                        example: '08:00:00'
+                      endTime:
+                        type: string
+                        example: '12:00:00'
+          createdAt:
+            type: string
+            example: '2022-09-09T03:28:27.517Z'
+          updatedAt:
+            type: string
+            example: '2022-09-09T03:29:28.199Z'
+    ExceptionUpdated:
+      name: ExceptionUpdated
+      payload:
+        type: object
+        properties:
+          id:
+            type: string
+            example: '838'
+          startDate:
+            type: string
+            example: '01/09/2022'
+          endDate:
+            type: string
+            example: '30/09/2022'
+          isEnabled:
+            type: boolean
+            example: true
+          recurrence:
+            type: string
+            example: weekly
+          repeatRecurrenceEvery:
+            type: number
+            example: 1
+          professionalIds:
+            type: array
+            items:
+              type: string
+              example: '2048'
+          serviceIds:
+            type: array
+            items:
+              type: string
+              example: '265'
+          dayOfMonth:
+            type: number
+            example: 1
+          weekOfMonth:
+            type: number
+            example: 1
+          dayOfWeek:
+            type: number
+            example: 1
+          days:
+            type: array
+            items:
+              type: object
+              properties:
+                dayOfWeek:
+                  type: number
+                  example: 1
+                blocks:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      startTime:
+                        type: string
+                        example: '08:00:00'
+                      endTime:
+                        type: string
+                        example: '12:00:00'
+          createdAt:
+            type: string
+            example: '2022-09-09T03:28:27.517Z'
+          updatedAt:
+            type: string
+            example: '2022-09-09T03:29:28.199Z'

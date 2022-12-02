@@ -1,0 +1,17 @@
+{
+  "name": "cas-continuum",
+  "version": "0.0.0",
+  "scripts": {
+    "medicap-replicator-message:start": "turbo run start --filter=medicap-replicator-message",
+    "deploy": "npm run deploy:resource && npm run deploy:module",
+    "deploy:resource": "turbo run deploy --filter=*-resource",
+    "deploy:module": "turbo run deploy --filter=!*-resource",
+    "remove": "turbo run remove"
+  },
+  "workspaces": [
+    "service/**"
+  ],
+  "devDependencies": {
+    "turbo": "^1.6.3"
+  }
+}
