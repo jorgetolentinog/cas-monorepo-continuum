@@ -10,8 +10,8 @@
     "remove": "turbo run remove"
   },
   "workspaces": [
-    "@medicap-replicator/*",
-    "@telemedicine-schedule/*"
+    "@cas-medicap-replicator/*",
+    "@cas-telemedicine-schedule/*"
   ],
   "devDependencies": {
     "turbo": "^1.6.3"
