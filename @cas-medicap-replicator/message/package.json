@@ -20,7 +20,8 @@
     "@package/error": "*",
     "@package/logger": "*",
     "@package/logger.simple": "*",
-    "@package/logger.structured": "*"
+    "@package/logger.structured": "*",
+    "@package/apigateway-wrapper": "*"
   },
   "devDependencies": {
     "@nearst/serverless-dynalite": "^2.0.4",

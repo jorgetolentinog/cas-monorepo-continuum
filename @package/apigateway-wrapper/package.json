@@ -1,5 +1,5 @@
 {
-  "name": "@package/lambda.apigateway",
+  "name": "@package/apigateway-wrapper",
   "version": "0.0.0",
   "main": "./index.ts",
   "types": "./index.ts",
@@ -10,6 +10,7 @@
     "@package/tsconfig": "*",
     "@package/error": "*",
     "@package/logger": "*",
+    "@types/aws-lambda": "^8.10.106",
     "typescript": "^4.8.4"
   }
 }

@@ -1,11 +1,9 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda'
-import { inject, injectable } from 'tsyringe'
 import { ValidationError } from '@package/error'
 import { Logger } from '@package/logger'
 
-@injectable()
 export class ApiGatewayWrapper {
-  constructor(@inject('Logger') private logger: Logger) {}
+  constructor(private logger: Logger) {}
 
   execute(handler: ApiGatewayWrapperHandler) {
     return async (
