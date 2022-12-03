@@ -1,4 +1,4 @@
-import { Booking } from "../../booking/entity/booking";
+import { Booking } from "../entity/booking";
 import { BookingRepository } from "./booking-repository";
 
 export class DynamoDBBookingRepository implements BookingRepository {
