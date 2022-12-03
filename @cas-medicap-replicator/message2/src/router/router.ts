@@ -1,11 +1,9 @@
 import { z } from "zod";
-import { injectable } from "tsyringe";
 import { APIGatewayEvent } from "aws-lambda";
 import { ValidationError } from "@package/error";
 import { ApiGatewayWrapperHandler } from "@package/apigateway-wrapper";
 import { BookingRoute } from "./booking-route";
 
-@injectable()
 export class Router implements ApiGatewayWrapperHandler {
   constructor(private bookingRoute: BookingRoute) {}
 
