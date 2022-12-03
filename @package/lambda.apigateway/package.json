@@ -1,0 +1,15 @@
+{
+  "name": "@package/lambda.apigateway",
+  "version": "0.0.0",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "dependencies": {
+    "tsyringe": "^4.7.0"
+  },
+  "devDependencies": {
+    "@package/tsconfig": "*",
+    "@package/error": "*",
+    "@package/logger": "*",
+    "typescript": "^4.8.4"
+  }
+}
