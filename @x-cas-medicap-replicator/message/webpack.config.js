@@ -5,7 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 Object.entries(slsw.lib.entries).forEach(([key, value]) => {
   slsw.lib.entries[key] = [
     'reflect-metadata',
-    // '@/infrastructure/injection',
+    '@/infrastructure/injection',
     value
   ]
 })

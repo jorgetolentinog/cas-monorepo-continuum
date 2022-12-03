@@ -1,0 +1,14 @@
+{
+  "name": "@cas-medicap-replicator/resource",
+  "version": "0.0.0",
+  "scripts": {
+    "deploy": "npx serverless deploy",
+    "remove": "npx serverless remove"
+  },
+  "dependencies": {
+    "fast-safe-stringify": "^2.1.1"
+  },
+  "devDependencies": {
+    "serverless": "^3.22.0"
+  }
+}

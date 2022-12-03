@@ -12,8 +12,7 @@
   },
   "workspaces": [
     "@package/*",
-    "@cas-medicap-replicator/*",
-    "@cas-telemedicine-schedule/*"
+    "@cas-medicap-replicator/*"
   ],
   "devDependencies": {
     "turbo": "^1.6.3"
