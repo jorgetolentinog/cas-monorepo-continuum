@@ -1,1 +1,4 @@
-export { ApiGatewayWrapper } from "./ApiGatewayWrapper";
+export {
+  ApiGatewayWrapper,
+  ApiGatewayWrapperHandler,
+} from "./ApiGatewayWrapper";
