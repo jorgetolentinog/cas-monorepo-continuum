@@ -1,1 +1,0 @@
-export { SimpleLogger } from "./SimpleLogger";
