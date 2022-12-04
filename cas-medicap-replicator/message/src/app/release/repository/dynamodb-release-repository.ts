@@ -1,29 +1,29 @@
-import { PreBookingRepository } from "./pre-booking-repository";
-import { PreBooking } from "../entity/pre-booking";
+import { ReleaseRepository } from "./release-repository";
+import { Release } from "../entity/Release";
 import { dynamoDbClient } from "@package/dynamodb-client";
 
-export class DynamoDBPreBookingRepository implements PreBookingRepository {
+export class DynamoDBReleaseRepository implements ReleaseRepository {
   private readonly _table = process.env.DYNAMODB_TABLE ?? "DynamoDBTable";
 
-  async create(preBooking: PreBooking): Promise<void> {
+  async create(release: Release): Promise<void> {
     await dynamoDbClient
       .put({
         TableName: this._table,
         Item: {
-          id: preBooking.id,
-          date: preBooking.date,
-          companyId: preBooking.companyId,
-          officeId: preBooking.officeId,
-          serviceId: preBooking.serviceId,
-          professionalId: preBooking.professionalId,
-          calendarId: preBooking.calendarId,
-          blockDurationInMinutes: preBooking.blockDurationInMinutes,
-          isEnabled: preBooking.isEnabled,
-          createdAt: preBooking.createdAt,
-          updatedAt: preBooking.updatedAt,
+          id: release.id,
+          date: release.date,
+          blockDurationInMinutes: release.blockDurationInMinutes,
+          professionalId: release.professionalId,
+          companyId: release.companyId,
+          officeId: release.officeId,
+          serviceId: release.serviceId,
+          calendarId: release.calendarId,
+          isEnabled: release.isEnabled,
+          createdAt: release.createdAt,
+          updatedAt: release.updatedAt,
           // Interno
-          _pk: `preBooking#${preBooking.id}`,
-          _sk: `preBooking#${preBooking.id}`,
+          _pk: `release#${release.id}`,
+          _sk: `release#${release.id}`,
         },
         ExpressionAttributeNames: {
           "#_pk": "_pk",
@@ -35,18 +35,18 @@ export class DynamoDBPreBookingRepository implements PreBookingRepository {
       .promise();
   }
 
-  async update(preBooking: PreBooking): Promise<void> {
+  async update(release: Release): Promise<void> {
     const attrs = {
-      date: preBooking.date,
-      companyId: preBooking.companyId,
-      officeId: preBooking.officeId,
-      serviceId: preBooking.serviceId,
-      professionalId: preBooking.professionalId,
-      calendarId: preBooking.calendarId,
-      blockDurationInMinutes: preBooking.blockDurationInMinutes,
-      isEnabled: preBooking.isEnabled,
-      createdAt: preBooking.createdAt,
-      updatedAt: preBooking.updatedAt,
+      date: release.date,
+      blockDurationInMinutes: release.blockDurationInMinutes,
+      professionalId: release.professionalId,
+      companyId: release.companyId,
+      officeId: release.officeId,
+      serviceId: release.serviceId,
+      calendarId: release.calendarId,
+      isEnabled: release.isEnabled,
+      createdAt: release.createdAt,
+      updatedAt: release.updatedAt,
     };
 
     let updateExpression = "set ";
@@ -68,8 +68,8 @@ export class DynamoDBPreBookingRepository implements PreBookingRepository {
       .update({
         TableName: this._table,
         Key: {
-          _pk: `preBooking#${preBooking.id}`,
-          _sk: `preBooking#${preBooking.id}`,
+          _pk: `release#${release.id}`,
+          _sk: `release#${release.id}`,
         },
         UpdateExpression: updateExpression,
         ConditionExpression:
@@ -80,15 +80,15 @@ export class DynamoDBPreBookingRepository implements PreBookingRepository {
       .promise();
   }
 
-  async findById(preBookingId: string): Promise<PreBooking | null> {
+  async findById(releaseId: string): Promise<Release | null> {
     const result = await dynamoDbClient
       .query({
         TableName: this._table,
         KeyConditionExpression: "#_pk = :_pk and #_sk = :_sk",
         ExpressionAttributeNames: { "#_pk": "_pk", "#_sk": "_sk" },
         ExpressionAttributeValues: {
-          ":_pk": `preBooking#${preBookingId}`,
-          ":_sk": `preBooking#${preBookingId}`,
+          ":_pk": `release#${releaseId}`,
+          ":_sk": `release#${releaseId}`,
         },
       })
       .promise();
@@ -101,12 +101,12 @@ export class DynamoDBPreBookingRepository implements PreBookingRepository {
     return {
       id: item.id,
       date: item.date,
+      blockDurationInMinutes: item.blockDurationInMinutes,
+      professionalId: item.professionalId,
       companyId: item.companyId,
       officeId: item.officeId,
       serviceId: item.serviceId,
-      professionalId: item.professionalId,
       calendarId: item.calendarId,
-      blockDurationInMinutes: item.blockDurationInMinutes,
       isEnabled: item.isEnabled,
       createdAt: item.createdAt,
       updatedAt: item.updatedAt,
