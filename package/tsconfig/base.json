@@ -2,7 +2,6 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
   "compilerOptions": {
-    "declaration": true,
     "moduleResolution": "node",
     "target": "es2019",
     "experimentalDecorators": true,

@@ -1,16 +1,4 @@
 {
-  "compilerOptions": {
-    "moduleResolution": "node",
-    "target": "es2019",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "strict": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
+  "extends": "@package/tsconfig/base.json",
   "include": ["src/**/*"]
 }

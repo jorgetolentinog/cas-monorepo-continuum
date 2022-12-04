@@ -1,5 +1,5 @@
 import { ReleaseRepository } from './release-repository'
-import { Release } from '../entity/Release'
+import { Release } from '../entity/release'
 import { dynamoDbClient } from '@package/dynamodb-client'
 
 export class DynamoDBReleaseRepository implements ReleaseRepository {

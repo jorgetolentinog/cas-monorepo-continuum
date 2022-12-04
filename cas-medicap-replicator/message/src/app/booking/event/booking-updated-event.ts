@@ -1,4 +1,4 @@
-import { Booking } from '../entity/Booking'
+import { Booking } from '../entity/booking'
 import { EventBusMessage } from '@package/eventbus/EventBus'
 import { v4 as uuidv4 } from 'uuid'
 

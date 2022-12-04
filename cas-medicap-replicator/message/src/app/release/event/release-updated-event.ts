@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import { Release } from '../entity/Release'
+import { Release } from '../entity/release'
 import { EventBusMessage } from '@package/eventbus/EventBus'
 
 export class ReleaseUpdatedEvent implements EventBusMessage {

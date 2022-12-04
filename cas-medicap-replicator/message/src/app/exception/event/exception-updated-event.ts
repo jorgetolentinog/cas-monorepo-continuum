@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import { Exception } from '../entity/Exception'
+import { Exception } from '../entity/exception'
 import { EventBusMessage } from '@package/eventbus/EventBus'
 
 export class ExceptionUpdatedEvent implements EventBusMessage {

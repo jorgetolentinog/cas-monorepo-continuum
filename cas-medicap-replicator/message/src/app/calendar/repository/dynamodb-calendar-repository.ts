@@ -1,5 +1,5 @@
 import { CalendarRepository } from '../repository/calendar-repository'
-import { Calendar } from '../entity/Calendar'
+import { Calendar } from '../entity/calendar'
 import { dynamoDbClient } from '@package/dynamodb-client'
 
 export class DynamoDBCalendarRepository implements CalendarRepository {
