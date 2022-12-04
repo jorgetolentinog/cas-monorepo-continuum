@@ -10,6 +10,7 @@ importers:
       '@nearst/serverless-dynalite': ^2.0.4
       '@package/dynamodb-client': workspace:^0.0.0
       '@package/error': workspace:^0.0.0
+      '@package/eslint-config': workspace:^0.0.0
       '@package/eventbus': workspace:^0.0.0
       '@package/lambda-apigateway-wrapper': workspace:^0.0.0
       '@package/metrics': workspace:^0.0.0
@@ -18,8 +19,7 @@ importers:
       '@types/aws-lambda': ^8.10.106
       '@types/node': ^18.11.10
       '@types/uuid': ^8.3.4
-      '@typescript-eslint/eslint-plugin': ^5.39.0
-      '@typescript-eslint/parser': ^5.39.0
+      aws-sdk: ^2.1230.0
       date-fns: ^2.29.3
       eslint: ^8.24.0
       prettier: ^2.7.1
@@ -38,18 +38,18 @@ importers:
       '@package/eventbus': link:../../package/eventbus
       '@package/lambda-apigateway-wrapper': link:../../package/lambda-apigateway-wrapper
       '@package/metrics': link:../../package/metrics
+      aws-sdk: 2.1259.0
       date-fns: 2.29.3
       uuid: 9.0.0
       zod: 3.19.1
     devDependencies:
-      '@nearst/serverless-dynalite': 2.0.4
+      '@nearst/serverless-dynalite': 2.0.4_aws-sdk@2.1259.0
+      '@package/eslint-config': link:../../package/eslint-config
       '@package/prettier-config': link:../../package/prettier-config
       '@package/tsconfig': link:../../package/tsconfig
       '@types/aws-lambda': 8.10.109
       '@types/node': 18.11.10
       '@types/uuid': 8.3.4
-      '@typescript-eslint/eslint-plugin': 5.45.0_yjegg5cyoezm3fzsmuszzhetym
-      '@typescript-eslint/parser': 5.45.0_s5ps7njkmjlaqajutnox5ntcla
       eslint: 8.29.0
       prettier: 2.8.0
       serverless: 3.25.1
@@ -99,6 +99,18 @@ importers:
       typescript: ^4.8.4
     devDependencies:
       '@package/tsconfig': link:../tsconfig
+      typescript: 4.9.3
+
+  package/eslint-config:
+    specifiers:
+      '@typescript-eslint/eslint-plugin': ^5.39.0
+      '@typescript-eslint/parser': ^5.39.0
+      eslint: ^8.24.0
+      typescript: ^4.8.4
+    devDependencies:
+      '@typescript-eslint/eslint-plugin': 5.45.0_yjegg5cyoezm3fzsmuszzhetym
+      '@typescript-eslint/parser': 5.45.0_s5ps7njkmjlaqajutnox5ntcla
+      eslint: 8.29.0
       typescript: 4.9.3
 
   package/eventbus:
@@ -1221,11 +1233,12 @@ packages:
     resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
     dev: true
 
-  /@nearst/serverless-dynalite/2.0.4:
+  /@nearst/serverless-dynalite/2.0.4_aws-sdk@2.1259.0:
     resolution: {integrity: sha512-dJeVjcYQKkKkauZAsPj3/m7ukL3aN/KDP/6MLpBkA+JXjmmiygOougONclVQJvzv3UZ0bfXORT8OItcd3aYD+Q==}
     peerDependencies:
       aws-sdk: ^2.610.0
     dependencies:
+      aws-sdk: 2.1259.0
       dynalite: 3.2.2
     dev: true
 
