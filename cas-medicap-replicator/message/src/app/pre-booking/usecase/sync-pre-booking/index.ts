@@ -3,7 +3,7 @@ import { eventbus } from "@package/eventbus";
 import { SyncPreBooking } from "./sync-pre-booking";
 import { preBookingRepository } from "../../repository";
 
-export const syncBooking = new SyncPreBooking(
+export const syncPreBooking = new SyncPreBooking(
   preBookingRepository,
   eventbus,
   metrics
