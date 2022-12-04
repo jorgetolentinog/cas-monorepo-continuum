@@ -2,7 +2,8 @@
   "name": "cas-continuum",
   "version": "0.0.0",
   "scripts": {
-    "@cas-medicap-replicator/message:start": "turbo run start --filter=@cas-medicap-replicator/message",
+    "@cas-medicap-replicator/message:start": "pnpm --filter @cas-medicap-replicator/message start",
+    "@cas-medicap-replicator/message:start2": "turbo run start --filter=@cas-medicap-replicator/message",
     "@cas-medicap-replicator/message2:start": "turbo run start --filter=@cas-medicap-replicator/message2",
     "telemedicine-schedule-availability:start": "turbo run start --filter=telemedicine-schedule-availability",
     "deploy": "npm run deploy:resource && npm run deploy:module",

@@ -2,13 +2,14 @@
   "name": "@cas-medicap-replicator/message",
   "version": "0.0.0",
   "scripts": {
-    "start": "npx serverless offline start",
+    "start": "serverless offline start",
     "prettier": "prettier --write .",
     "eslint": "npx eslint --ext .js,.ts --max-warnings 0 .",
     "deploy": "npx serverless deploy",
     "remove": "npx serverless remove"
   },
   "dependencies": {
+    "@package/error": "^0.0.0",
     "aws-sdk": "^2.1230.0",
     "aws-xray-sdk-core": "^3.3.8",
     "date-fns": "^2.29.3",
@@ -16,12 +17,7 @@
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.7.0",
     "uuid": "^9.0.0",
-    "zod": "^3.19.1",
-    "@package/error": "*",
-    "@package/logger": "*",
-    "@package/logger.simple": "*",
-    "@package/logger.structured": "*",
-    "@package/apigateway-wrapper": "*"
+    "zod": "^3.19.1"
   },
   "devDependencies": {
     "@nearst/serverless-dynalite": "^2.0.4",
