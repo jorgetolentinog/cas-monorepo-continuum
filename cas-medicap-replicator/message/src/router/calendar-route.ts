@@ -85,7 +85,7 @@ export class CalendarRoute {
     const [year, month] = age.split(",");
     return {
       year: Number(year),
-      month: Number(month),
+      month: Number(month ?? 0),
     };
   }
 
