@@ -1,11 +1,13 @@
 {
-  "name": "@package/logger",
+  "name": "@package/dynamodb-client",
   "version": "0.0.0",
   "main": "./index.ts",
   "types": "./index.ts",
   "devDependencies": {
     "@package/tsconfig": "*",
-    "@types/node": "^18.11.10",
     "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@package/aws-sdk-with-xray": "workspace:*"
   }
 }
