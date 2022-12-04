@@ -1,9 +1,7 @@
-import { injectable } from "tsyringe";
 import { CalendarRepository } from "../repository/calendar-repository";
 import { Calendar } from "../entity/Calendar";
 import { dynamoDbClient } from "@package/dynamodb-client";
 
-@injectable()
 export class DynamoDBCalendarRepository implements CalendarRepository {
   private readonly _table = process.env.DYNAMODB_TABLE ?? "DynamoDBTable";
 

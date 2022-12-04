@@ -18,19 +18,14 @@ importers:
       '@types/uuid': ^8.3.4
       '@typescript-eslint/eslint-plugin': ^5.39.0
       '@typescript-eslint/parser': ^5.39.0
-      aws-sdk: ^2.1230.0
-      aws-xray-sdk-core: ^3.3.8
       date-fns: ^2.29.3
       eslint: ^8.24.0
-      fast-safe-stringify: ^2.1.1
       prettier: ^2.7.1
-      reflect-metadata: ^0.1.13
       serverless: ^3.22.0
       serverless-offline: ^11.1.2
       serverless-webpack: ^5.10.0
       terser-webpack-plugin: ^5.3.6
       ts-loader: ^9.4.1
-      tsyringe: ^4.7.0
       typescript: ^4.8.4
       uuid: ^9.0.0
       webpack: ^5.74.0
@@ -41,18 +36,13 @@ importers:
       '@package/eventbus': link:../../package/eventbus
       '@package/lambda-apigateway-wrapper': link:../../package/lambda-apigateway-wrapper
       '@package/metrics': link:../../package/metrics
-      '@types/node': 18.11.10
-      aws-sdk: 2.1259.0
-      aws-xray-sdk-core: 3.4.0
       date-fns: 2.29.3
-      fast-safe-stringify: 2.1.1
-      reflect-metadata: 0.1.13
-      tsyringe: 4.7.0
       uuid: 9.0.0
       zod: 3.19.1
     devDependencies:
-      '@nearst/serverless-dynalite': 2.0.4_aws-sdk@2.1259.0
+      '@nearst/serverless-dynalite': 2.0.4
       '@types/aws-lambda': 8.10.109
+      '@types/node': 18.11.10
       '@types/uuid': 8.3.4
       '@typescript-eslint/eslint-plugin': 5.45.0_yjegg5cyoezm3fzsmuszzhetym
       '@typescript-eslint/parser': 5.45.0_s5ps7njkmjlaqajutnox5ntcla
@@ -1224,12 +1214,11 @@ packages:
     resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
     dev: true
 
-  /@nearst/serverless-dynalite/2.0.4_aws-sdk@2.1259.0:
+  /@nearst/serverless-dynalite/2.0.4:
     resolution: {integrity: sha512-dJeVjcYQKkKkauZAsPj3/m7ukL3aN/KDP/6MLpBkA+JXjmmiygOougONclVQJvzv3UZ0bfXORT8OItcd3aYD+Q==}
     peerDependencies:
       aws-sdk: ^2.610.0
     dependencies:
-      aws-sdk: 2.1259.0
       dynalite: 3.2.2
     dev: true
 
@@ -4740,10 +4729,6 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /reflect-metadata/0.1.13:
-    resolution: {integrity: sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==}
-    dev: false
-
   /regexp.prototype.flags/1.4.3:
     resolution: {integrity: sha512-fjggEOO3slI6Wvgjwflkc4NFRCTZAu5CnNfBd5qOMYhWdn67nJBBu34/TkD++eeFmd8C9r9jfXJ27+nSiRkSUA==}
     engines: {node: '>= 0.4'}
@@ -5477,6 +5462,7 @@ packages:
 
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
+    dev: true
 
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
@@ -5491,13 +5477,6 @@ packages:
       tslib: 1.14.1
       typescript: 4.9.3
     dev: true
-
-  /tsyringe/4.7.0:
-    resolution: {integrity: sha512-ncFDM1jTLsok4ejMvSW5jN1VGPQD48y2tfAR0pdptWRKYX4bkbqPt92k7KJ5RFJ1KV36JEs/+TMh7I6OUgj74g==}
-    engines: {node: '>= 6.0.0'}
-    dependencies:
-      tslib: 1.14.1
-    dev: false
 
   /type-check/0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
