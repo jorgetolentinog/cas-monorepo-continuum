@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@package/dynamodb-client": "workspace:^0.0.0",
-    "@package/error": "^0.0.0",
+    "@package/error": "workspace:^0.0.0",
+    "@package/eventbus": "workspace:^0.0.0",
     "@package/lambda-apigateway-wrapper": "workspace:^0.0.0",
     "@package/metrics": "workspace:^0.0.0",
     "@types/node": "^18.11.10",

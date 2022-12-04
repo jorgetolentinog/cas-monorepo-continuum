@@ -1,0 +1,13 @@
+{
+  "name": "@package/eventbus",
+  "version": "0.0.0",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "devDependencies": {
+    "@package/tsconfig": "*",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@package/aws-sdk-with-xray": "workspace:^0.0.0"
+  }
+}
