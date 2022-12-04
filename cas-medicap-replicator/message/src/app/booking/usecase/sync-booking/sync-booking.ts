@@ -1,5 +1,5 @@
 import { BookingRepository } from "../../repository/booking-repository";
-import { Metrics } from "../../../../shared/metrics/metrics";
+import { Metrics } from "@package/metrics/metrics";
 
 export class SyncBooking {
   constructor(

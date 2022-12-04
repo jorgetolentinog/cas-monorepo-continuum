@@ -1,6 +1,6 @@
 import { BookingRepository } from "./booking-repository";
 import { Booking } from "../entity/booking";
-import { dynamoDbClient } from "../../../shared/dynamodb-client";
+import { dynamoDbClient } from "@package/dynamodb-client";
 
 export class DynamoDBBookingRepository implements BookingRepository {
   private readonly _table = process.env.DYNAMODB_TABLE ?? "DynamoDBTable";

@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { APIGatewayEvent } from "aws-lambda";
 import { ValidationError } from "@package/error";
-import { LambdaApiGatewayWrapperHandler } from "../shared/lambda-apigateway-wrapper/wrapper";
+import { LambdaApiGatewayWrapperHandler } from "@package/lambda-apigateway-wrapper/wrapper";
 import { BookingRoute } from "./booking-route";
 
 export class Router implements LambdaApiGatewayWrapperHandler {
