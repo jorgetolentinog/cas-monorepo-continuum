@@ -13,6 +13,7 @@ importers:
       '@package/eventbus': workspace:^0.0.0
       '@package/lambda-apigateway-wrapper': workspace:^0.0.0
       '@package/metrics': workspace:^0.0.0
+      '@package/prettier-config': workspace:^0.0.0
       '@types/aws-lambda': ^8.10.106
       '@types/node': ^18.11.10
       '@types/uuid': ^8.3.4
@@ -41,6 +42,7 @@ importers:
       zod: 3.19.1
     devDependencies:
       '@nearst/serverless-dynalite': 2.0.4
+      '@package/prettier-config': link:../../package/prettier-config
       '@types/aws-lambda': 8.10.109
       '@types/node': 18.11.10
       '@types/uuid': 8.3.4
@@ -148,6 +150,9 @@ importers:
       '@package/tsconfig': link:../tsconfig
       '@types/node': 18.11.10
       typescript: 4.9.3
+
+  package/prettier-config:
+    specifiers: {}
 
   package/tsconfig:
     specifiers: {}
