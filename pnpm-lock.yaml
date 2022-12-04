@@ -62,10 +62,13 @@ importers:
 
   cas-medicap-replicator/resource:
     specifiers:
-      fast-safe-stringify: ^2.1.1
       serverless: ^3.22.0
-    dependencies:
-      fast-safe-stringify: 2.1.1
+    devDependencies:
+      serverless: 3.25.1
+
+  cas-telemedicine-schedule/resource:
+    specifiers:
+      serverless: ^3.22.0
     devDependencies:
       serverless: 3.25.1
 

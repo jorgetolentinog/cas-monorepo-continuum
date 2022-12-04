@@ -1,3 +1,4 @@
 packages:
   - 'package/*'
   - 'cas-medicap-replicator/*'
+  - 'cas-telemedicine-schedule/*'

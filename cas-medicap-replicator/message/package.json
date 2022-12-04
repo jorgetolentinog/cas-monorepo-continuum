@@ -5,8 +5,8 @@
     "start": "serverless offline start",
     "prettier": "prettier --write .",
     "eslint": "npx eslint --ext .js,.ts --max-warnings 0 .",
-    "deploy": "npx serverless deploy",
-    "remove": "npx serverless remove"
+    "deployx": "npx serverless deploy",
+    "removex": "npx serverless remove"
   },
   "dependencies": {
     "@package/dynamodb-client": "workspace:^0.0.0",

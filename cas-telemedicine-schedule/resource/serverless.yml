@@ -1,0 +1,37 @@
+app: telemedicine-schedule
+service: telemedicine-schedule-resource
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  memorySize: 128
+  apiGateway:
+    shouldStartNameWithService: true
+  tracing:
+    apiGateway: true
+    lambda: true
+
+functions:
+  httpRootGet:
+    handler: ./src/http-root-get.handler
+    events:
+      - http:
+          path: /
+          method: get
+
+resources:
+  Outputs:
+    ApiGatewayRestApiId:
+      Value:
+        Ref: ApiGatewayRestApi
+      Export:
+        Name: ${self:service}-${sls:stage}-ApiGatewayRestApiId
+
+    ApiGatewayRestApiRootResourceId:
+      Value:
+        Fn::GetAtt:
+          - ApiGatewayRestApi
+          - RootResourceId
+      Export:
+        Name: ${self:service}-${sls:stage}-ApiGatewayRestApiRootResourceId

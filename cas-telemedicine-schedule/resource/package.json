@@ -1,5 +1,5 @@
 {
-  "name": "@cas-medicap-replicator/resource",
+  "name": "@cas-telemedicine-schedule/resource",
   "version": "0.0.0",
   "scripts": {
     "deploy": "serverless deploy",
