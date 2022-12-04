@@ -1,3 +1,3 @@
-import { DynamoDBExceptionRepository } from "./dynamodb-exception-repository";
+import { DynamoDBExceptionRepository } from './dynamodb-exception-repository'
 
-export const exceptionRepository = new DynamoDBExceptionRepository();
+export const exceptionRepository = new DynamoDBExceptionRepository()

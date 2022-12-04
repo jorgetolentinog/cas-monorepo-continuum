@@ -1,9 +1,9 @@
-import { CalendarRepository } from "../repository/calendar-repository";
-import { Calendar } from "../entity/Calendar";
-import { dynamoDbClient } from "@package/dynamodb-client";
+import { CalendarRepository } from '../repository/calendar-repository'
+import { Calendar } from '../entity/Calendar'
+import { dynamoDbClient } from '@package/dynamodb-client'
 
 export class DynamoDBCalendarRepository implements CalendarRepository {
-  private readonly _table = process.env.DYNAMODB_TABLE ?? "DynamoDBTable";
+  private readonly _table = process.env.DYNAMODB_TABLE ?? 'DynamoDBTable'
 
   async create(calendar: Calendar): Promise<void> {
     await dynamoDbClient
@@ -27,16 +27,16 @@ export class DynamoDBCalendarRepository implements CalendarRepository {
           updatedAt: calendar.updatedAt,
           // Interno
           _pk: `calendar#${calendar.id}`,
-          _sk: `calendar#${calendar.id}`,
+          _sk: `calendar#${calendar.id}`
         },
         ExpressionAttributeNames: {
-          "#_pk": "_pk",
-          "#_sk": "_sk",
+          '#_pk': '_pk',
+          '#_sk': '_sk'
         },
         ConditionExpression:
-          "attribute_not_exists(#_pk) and attribute_not_exists(#_sk)",
+          'attribute_not_exists(#_pk) and attribute_not_exists(#_sk)'
       })
-      .promise();
+      .promise()
   }
 
   async update(calendar: Calendar): Promise<void> {
@@ -54,55 +54,55 @@ export class DynamoDBCalendarRepository implements CalendarRepository {
       conditionOfService: calendar.conditionOfService,
       days: calendar.days,
       createdAt: calendar.createdAt,
-      updatedAt: calendar.updatedAt,
-    };
-
-    let updateExpression = "set ";
-    const expressionAttributeNames: Record<string, string> = {
-      "#_pk": "_pk",
-      "#_sk": "_sk",
-    };
-    const expressionAttributeValues: Record<string, unknown> = {};
-    for (const prop in attrs) {
-      const value = (attrs as Record<string, unknown>)[prop] ?? null;
-      updateExpression += `#${prop} = :${prop},`;
-      expressionAttributeNames[`#${prop}`] = prop;
-      expressionAttributeValues[`:${prop}`] = value;
+      updatedAt: calendar.updatedAt
     }
-    updateExpression = updateExpression.slice(0, -1);
+
+    let updateExpression = 'set '
+    const expressionAttributeNames: Record<string, string> = {
+      '#_pk': '_pk',
+      '#_sk': '_sk'
+    }
+    const expressionAttributeValues: Record<string, unknown> = {}
+    for (const prop in attrs) {
+      const value = (attrs as Record<string, unknown>)[prop] ?? null
+      updateExpression += `#${prop} = :${prop},`
+      expressionAttributeNames[`#${prop}`] = prop
+      expressionAttributeValues[`:${prop}`] = value
+    }
+    updateExpression = updateExpression.slice(0, -1)
 
     await dynamoDbClient
       .update({
         TableName: this._table,
         Key: {
           _pk: `calendar#${calendar.id}`,
-          _sk: `calendar#${calendar.id}`,
+          _sk: `calendar#${calendar.id}`
         },
         UpdateExpression: updateExpression,
         ConditionExpression:
-          "attribute_exists(#_pk) and attribute_exists(#_sk)",
+          'attribute_exists(#_pk) and attribute_exists(#_sk)',
         ExpressionAttributeNames: expressionAttributeNames,
-        ExpressionAttributeValues: expressionAttributeValues,
+        ExpressionAttributeValues: expressionAttributeValues
       })
-      .promise();
+      .promise()
   }
 
   async findById(calendarId: string): Promise<Calendar | null> {
     const result = await dynamoDbClient
       .query({
         TableName: this._table,
-        KeyConditionExpression: "#_pk = :_pk and #_sk = :_sk",
-        ExpressionAttributeNames: { "#_pk": "_pk", "#_sk": "_sk" },
+        KeyConditionExpression: '#_pk = :_pk and #_sk = :_sk',
+        ExpressionAttributeNames: { '#_pk': '_pk', '#_sk': '_sk' },
         ExpressionAttributeValues: {
-          ":_pk": `calendar#${calendarId}`,
-          ":_sk": `calendar#${calendarId}`,
-        },
+          ':_pk': `calendar#${calendarId}`,
+          ':_sk': `calendar#${calendarId}`
+        }
       })
-      .promise();
+      .promise()
 
-    const item = result.Items?.[0];
+    const item = result.Items?.[0]
     if (item == null) {
-      return null;
+      return null
     }
 
     return {
@@ -120,7 +120,7 @@ export class DynamoDBCalendarRepository implements CalendarRepository {
       conditionOfService: item.conditionOfService,
       days: item.days,
       createdAt: item.createdAt,
-      updatedAt: item.updatedAt,
-    };
+      updatedAt: item.updatedAt
+    }
   }
 }

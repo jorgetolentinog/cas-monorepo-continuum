@@ -1,9 +1,9 @@
-import { PreBookingRepository } from "./pre-booking-repository";
-import { PreBooking } from "../entity/pre-booking";
-import { dynamoDbClient } from "@package/dynamodb-client";
+import { PreBookingRepository } from './pre-booking-repository'
+import { PreBooking } from '../entity/pre-booking'
+import { dynamoDbClient } from '@package/dynamodb-client'
 
 export class DynamoDBPreBookingRepository implements PreBookingRepository {
-  private readonly _table = process.env.DYNAMODB_TABLE ?? "DynamoDBTable";
+  private readonly _table = process.env.DYNAMODB_TABLE ?? 'DynamoDBTable'
 
   async create(preBooking: PreBooking): Promise<void> {
     await dynamoDbClient
@@ -23,16 +23,16 @@ export class DynamoDBPreBookingRepository implements PreBookingRepository {
           updatedAt: preBooking.updatedAt,
           // Interno
           _pk: `preBooking#${preBooking.id}`,
-          _sk: `preBooking#${preBooking.id}`,
+          _sk: `preBooking#${preBooking.id}`
         },
         ExpressionAttributeNames: {
-          "#_pk": "_pk",
-          "#_sk": "_sk",
+          '#_pk': '_pk',
+          '#_sk': '_sk'
         },
         ConditionExpression:
-          "attribute_not_exists(#_pk) and attribute_not_exists(#_sk)",
+          'attribute_not_exists(#_pk) and attribute_not_exists(#_sk)'
       })
-      .promise();
+      .promise()
   }
 
   async update(preBooking: PreBooking): Promise<void> {
@@ -46,56 +46,56 @@ export class DynamoDBPreBookingRepository implements PreBookingRepository {
       blockDurationInMinutes: preBooking.blockDurationInMinutes,
       isEnabled: preBooking.isEnabled,
       createdAt: preBooking.createdAt,
-      updatedAt: preBooking.updatedAt,
-    };
+      updatedAt: preBooking.updatedAt
+    }
 
-    let updateExpression = "set ";
+    let updateExpression = 'set '
     const expressionAttributeNames: Record<string, string> = {
-      "#_pk": "_pk",
-      "#_sk": "_sk",
-    };
-    const expressionAttributeValues: Record<string, unknown> = {};
+      '#_pk': '_pk',
+      '#_sk': '_sk'
+    }
+    const expressionAttributeValues: Record<string, unknown> = {}
 
     for (const prop in attrs) {
-      const value = (attrs as Record<string, unknown>)[prop] ?? null;
-      updateExpression += `#${prop} = :${prop},`;
-      expressionAttributeNames[`#${prop}`] = prop;
-      expressionAttributeValues[`:${prop}`] = value;
+      const value = (attrs as Record<string, unknown>)[prop] ?? null
+      updateExpression += `#${prop} = :${prop},`
+      expressionAttributeNames[`#${prop}`] = prop
+      expressionAttributeValues[`:${prop}`] = value
     }
-    updateExpression = updateExpression.slice(0, -1);
+    updateExpression = updateExpression.slice(0, -1)
 
     await dynamoDbClient
       .update({
         TableName: this._table,
         Key: {
           _pk: `preBooking#${preBooking.id}`,
-          _sk: `preBooking#${preBooking.id}`,
+          _sk: `preBooking#${preBooking.id}`
         },
         UpdateExpression: updateExpression,
         ConditionExpression:
-          "attribute_exists(#_pk) and attribute_exists(#_sk)",
+          'attribute_exists(#_pk) and attribute_exists(#_sk)',
         ExpressionAttributeNames: expressionAttributeNames,
-        ExpressionAttributeValues: expressionAttributeValues,
+        ExpressionAttributeValues: expressionAttributeValues
       })
-      .promise();
+      .promise()
   }
 
   async findById(preBookingId: string): Promise<PreBooking | null> {
     const result = await dynamoDbClient
       .query({
         TableName: this._table,
-        KeyConditionExpression: "#_pk = :_pk and #_sk = :_sk",
-        ExpressionAttributeNames: { "#_pk": "_pk", "#_sk": "_sk" },
+        KeyConditionExpression: '#_pk = :_pk and #_sk = :_sk',
+        ExpressionAttributeNames: { '#_pk': '_pk', '#_sk': '_sk' },
         ExpressionAttributeValues: {
-          ":_pk": `preBooking#${preBookingId}`,
-          ":_sk": `preBooking#${preBookingId}`,
-        },
+          ':_pk': `preBooking#${preBookingId}`,
+          ':_sk': `preBooking#${preBookingId}`
+        }
       })
-      .promise();
+      .promise()
 
-    const item = result.Items?.[0];
+    const item = result.Items?.[0]
     if (item == null) {
-      return null;
+      return null
     }
 
     return {
@@ -109,7 +109,7 @@ export class DynamoDBPreBookingRepository implements PreBookingRepository {
       blockDurationInMinutes: item.blockDurationInMinutes,
       isEnabled: item.isEnabled,
       createdAt: item.createdAt,
-      updatedAt: item.updatedAt,
-    };
+      updatedAt: item.updatedAt
+    }
   }
 }

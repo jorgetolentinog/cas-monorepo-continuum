@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { Calendar } from '../entity/Calendar'
-import { EventBusMessage } from "@package/eventbus/EventBus";
+import { EventBusMessage } from '@package/eventbus/EventBus'
 
 export class CalendarUpdatedEvent implements EventBusMessage {
   eventId: string

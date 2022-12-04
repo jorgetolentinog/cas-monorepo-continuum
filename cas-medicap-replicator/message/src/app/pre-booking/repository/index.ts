@@ -1,3 +1,3 @@
-import { DynamoDBPreBookingRepository } from "./dynamodb-pre-booking-repository";
+import { DynamoDBPreBookingRepository } from './dynamodb-pre-booking-repository'
 
-export const preBookingRepository = new DynamoDBPreBookingRepository();
+export const preBookingRepository = new DynamoDBPreBookingRepository()

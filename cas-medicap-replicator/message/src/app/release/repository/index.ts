@@ -1,3 +1,3 @@
-import { DynamoDBReleaseRepository } from "./dynamodb-release-repository";
+import { DynamoDBReleaseRepository } from './dynamodb-release-repository'
 
-export const releaseRepository = new DynamoDBReleaseRepository();
+export const releaseRepository = new DynamoDBReleaseRepository()

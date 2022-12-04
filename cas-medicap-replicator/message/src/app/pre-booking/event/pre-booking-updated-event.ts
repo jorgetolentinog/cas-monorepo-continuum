@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { PreBooking } from '../entity/pre-booking'
-import { EventBusMessage } from "@package/eventbus/EventBus";
+import { EventBusMessage } from '@package/eventbus/EventBus'
 
 export class PreBookingUpdatedEvent implements EventBusMessage {
   eventId: string
