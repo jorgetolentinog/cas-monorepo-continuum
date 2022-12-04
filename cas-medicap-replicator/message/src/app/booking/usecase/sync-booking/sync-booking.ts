@@ -1,9 +1,12 @@
 import { BookingRepository } from "../../repository/booking-repository";
 import { Metrics } from "@package/metrics/metrics";
+import { EventBus } from "@package/eventbus/EventBus";
+import { BookingUpdatedEvent } from "../../event/booking-updated-event";
 
 export class SyncBooking {
   constructor(
     private readonly bookingRepository: BookingRepository,
+    private readonly eventBus: EventBus,
     private readonly metrics: Metrics
   ) {}
 
@@ -44,6 +47,7 @@ export class SyncBooking {
       }
 
       metrics.putMetric("UpdateCount", 1);
+      await this.eventBus.publish(new BookingUpdatedEvent(booking));
     });
   }
 }
