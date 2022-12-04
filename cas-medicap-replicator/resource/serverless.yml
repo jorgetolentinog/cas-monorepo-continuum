@@ -1,0 +1,49 @@
+app: medicap-replicator
+service: medicap-replicator-resource
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  memorySize: 128
+  apiGateway:
+    shouldStartNameWithService: true
+  tracing:
+    apiGateway: true
+    lambda: true
+
+functions:
+  httpRootGet:
+    handler: ./src/http-root-get.handler
+    events:
+      - http:
+          path: /
+          method: get
+
+resources:
+  Resources:
+    EventBus:
+      Type: AWS::Events::EventBus
+      Properties:
+        Name: ${self:service}-${sls:stage}
+
+  Outputs:
+    ApiGatewayRestApiId:
+      Value:
+        Ref: ApiGatewayRestApi
+      Export:
+        Name: ${self:service}-${sls:stage}-ApiGatewayRestApiId
+
+    ApiGatewayRestApiRootResourceId:
+      Value:
+        Fn::GetAtt:
+          - ApiGatewayRestApi
+          - RootResourceId
+      Export:
+        Name: ${self:service}-${sls:stage}-ApiGatewayRestApiRootResourceId
+
+    EventBusName:
+      Value:
+        Ref: EventBus
+      Export:
+        Name: ${self:service}-${sls:stage}-EventBusName
