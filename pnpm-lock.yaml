@@ -16,6 +16,7 @@ importers:
       '@package/metrics': workspace:^0.0.0
       '@package/prettier-config': workspace:^0.0.0
       '@package/tsconfig': workspace:*
+      '@package/webpack-config': workspace:^0.0.0
       '@types/aws-lambda': ^8.10.106
       '@types/node': ^18.11.10
       '@types/uuid': ^8.3.4
@@ -26,8 +27,6 @@ importers:
       serverless: ^3.22.0
       serverless-offline: ^11.1.2
       serverless-webpack: ^5.10.0
-      terser-webpack-plugin: ^5.3.6
-      ts-loader: ^9.4.1
       typescript: ^4.8.4
       uuid: ^9.0.0
       webpack: ^5.74.0
@@ -47,6 +46,7 @@ importers:
       '@package/eslint-config': link:../../package/eslint-config
       '@package/prettier-config': link:../../package/prettier-config
       '@package/tsconfig': link:../../package/tsconfig
+      '@package/webpack-config': link:../../package/webpack-config
       '@types/aws-lambda': 8.10.109
       '@types/node': 18.11.10
       '@types/uuid': 8.3.4
@@ -55,8 +55,6 @@ importers:
       serverless: 3.25.1
       serverless-offline: 11.6.0_serverless@3.25.1
       serverless-webpack: 5.11.0_y2lsiwq3hwbgmid3jkdciej2pu
-      terser-webpack-plugin: 5.3.6_webpack@5.75.0
-      ts-loader: 9.4.2_vfotqvx6lgcbf3upbs6hgaza4q
       typescript: 4.9.3
       webpack: 5.75.0
 
@@ -173,6 +171,24 @@ importers:
 
   package/tsconfig:
     specifiers: {}
+
+  package/webpack-config:
+    specifiers:
+      '@types/node': ^18.11.10
+      serverless: ^3.22.0
+      serverless-webpack: ^5.10.0
+      terser-webpack-plugin: ^5.3.6
+      ts-loader: ^9.4.1
+      typescript: ^4.8.4
+      webpack: ^5.74.0
+    devDependencies:
+      '@types/node': 18.11.10
+      serverless: 3.25.1
+      serverless-webpack: 5.11.0_y2lsiwq3hwbgmid3jkdciej2pu
+      terser-webpack-plugin: 5.3.6_webpack@5.75.0
+      ts-loader: 9.4.2_vfotqvx6lgcbf3upbs6hgaza4q
+      typescript: 4.9.3
+      webpack: 5.75.0
 
 packages:
 
