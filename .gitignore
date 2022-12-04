@@ -8,5 +8,5 @@ node_modules
 !.gitignore
 !.editorconfig
 !.prettierrc
-!.eslintrc.json
+!.eslintrc
 !.env
