@@ -1,3 +1,3 @@
 packages:
-  - '@package/*'
-  - '@cas-medicap-replicator/*'
+  - 'package/*'
+  - 'cas-medicap-replicator/*'
