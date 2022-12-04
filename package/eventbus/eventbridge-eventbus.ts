@@ -1,4 +1,4 @@
-import { EventBus, EventBusMessage } from "./EventBus";
+import { EventBus, EventBusMessage } from "./eventbus";
 import { AWSType, AWS } from "@package/aws-sdk-with-xray";
 
 export class EventBridgeEventBus implements EventBus {

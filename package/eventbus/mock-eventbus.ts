@@ -1,4 +1,4 @@
-import { EventBus } from "./EventBus";
+import { EventBus } from "./eventbus";
 
 export class MockEventBus implements EventBus {
   async publish(): Promise<void> {

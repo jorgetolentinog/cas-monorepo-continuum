@@ -1,6 +1,6 @@
 import { BookingRepository } from "../../repository/booking-repository";
 import { Metrics } from "@package/metrics/metrics";
-import { EventBus } from "@package/eventbus/EventBus";
+import { EventBus } from "@package/eventbus/eventbus";
 import { BookingUpdatedEvent } from "../../event/booking-updated-event";
 
 export class SyncBooking {

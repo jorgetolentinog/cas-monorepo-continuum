@@ -1,1 +1,1 @@
-export { ValidationError } from "./ValidationError";
+export { ValidationError } from "./validation-error";
