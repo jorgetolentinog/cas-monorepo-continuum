@@ -7,7 +7,9 @@
     "test:coverage": "npm run test -- --coverage"
   },
   "dependencies": {
+    "@package/dayjs-extended": "workspace:^0.0.0",
     "@package/dynamodb-client": "workspace:^0.0.0",
+    "@package/error": "workspace:^0.0.0",
     "aws-sdk": "^2.1231.0",
     "aws-xray-sdk-core": "^3.3.8",
     "dayjs": "^1.11.5",

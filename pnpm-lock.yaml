@@ -67,7 +67,9 @@ importers:
   cas-telemedicine-schedule/availability:
     specifiers:
       '@nearst/serverless-dynalite': ^2.0.4
+      '@package/dayjs-extended': workspace:^0.0.0
       '@package/dynamodb-client': workspace:^0.0.0
+      '@package/error': workspace:^0.0.0
       '@types/aws-lambda': ^8.10.106
       '@types/jest': ^28.1.8
       '@typescript-eslint/eslint-plugin': ^5.39.0
@@ -91,7 +93,9 @@ importers:
       webpack: ^5.74.0
       zod: ^3.19.1
     dependencies:
+      '@package/dayjs-extended': link:../../package/dayjs-extended
       '@package/dynamodb-client': link:../../package/dynamodb-client
+      '@package/error': link:../../package/error
       aws-sdk: 2.1259.0
       aws-xray-sdk-core: 3.4.0
       dayjs: 1.11.6
@@ -132,6 +136,17 @@ importers:
     dependencies:
       aws-sdk: 2.1259.0
       aws-xray-sdk-core: 3.4.0
+    devDependencies:
+      '@package/tsconfig': link:../tsconfig
+      typescript: 4.9.3
+
+  package/dayjs-extended:
+    specifiers:
+      '@package/tsconfig': '*'
+      dayjs: ^1.11.5
+      typescript: ^4.8.4
+    dependencies:
+      dayjs: 1.11.6
     devDependencies:
       '@package/tsconfig': link:../tsconfig
       typescript: 4.9.3
