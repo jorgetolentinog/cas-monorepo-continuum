@@ -1,14 +1,6 @@
-const { pathsToModuleNameMapper } = require("ts-jest");
-const { jsWithTs } = require("ts-jest/presets");
+const config = require("@package/jest-config");
 
 module.exports = {
-  globals: {
-    [require.resolve("ts-jest")]: {
-      isolatedModules: true,
-    },
-  },
-  resetMocks: true,
-  restoreMocks: true,
-  transform: jsWithTs.transform,
+  ...config,
   collectCoverageFrom: ["src/**"],
 };

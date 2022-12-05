@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@nearst/serverless-dynalite": "^2.0.4",
+    "@package/jest-config": "workspace:^0.0.0",
     "@package/tsconfig": "workspace:^0.0.0",
     "@package/webpack-config": "workspace:^0.0.0",
     "@types/aws-lambda": "^8.10.106",
@@ -26,7 +27,6 @@
     "serverless": "^3.22.0",
     "serverless-offline": "^8.8.1",
     "serverless-webpack": "^5.10.0",
-    "ts-jest": "^28.0.8",
     "typescript": "^4.8.4",
     "webpack": "^5.74.0"
   }
