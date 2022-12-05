@@ -1,5 +1,5 @@
-import { MedicapExceptionRepository } from "./medicap-exception-repository";
-import { MedicapException } from "../entity/medicap-exception";
+import { MedicapExceptionRepository } from "../medicap-exception-repository";
+import { MedicapException } from "../../entity/medicap-exception";
 import { dynamoDbClient } from "@package/dynamodb-client";
 import { chunkArray } from "@package/dynamodb-client/chunk-array";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
