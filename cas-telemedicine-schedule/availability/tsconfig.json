@@ -1,4 +1,4 @@
 {
   "extends": "@package/tsconfig",
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "test/unit/**/*"]
 }

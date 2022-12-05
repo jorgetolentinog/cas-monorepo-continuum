@@ -2,7 +2,6 @@
   "name": "cas-continuum-monorepo",
   "version": "0.0.0",
   "scripts": {
-    "deploy:resource": "pnpm -r deploy",
-    "cas-medicap-replicator/message:start": "pnpm --filter @cas-medicap-replicator/message start"
+    "deploy:resource": "pnpm -r deploy"
   }
 }

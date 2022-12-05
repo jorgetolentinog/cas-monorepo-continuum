@@ -4,7 +4,7 @@
   "scripts": {
     "start": "serverless offline start",
     "test": "jest --verbose --runInBand",
-    "test:coverage": "npm run test -- --coverage"
+    "test:coverage": "jest --verbose --runInBand --coverage"
   },
   "dependencies": {
     "@package/dayjs-extended": "workspace:^0.0.0",
@@ -14,9 +14,6 @@
     "@package/lambda-eventbridge-wrapper": "workspace:^0.0.0",
     "aws-sdk": "^2.1230.0",
     "dayjs": "^1.11.5",
-    "fast-safe-stringify": "^2.1.1",
-    "reflect-metadata": "^0.1.13",
-    "tsyringe": "^4.7.0",
     "zod": "^3.19.1"
   },
   "devDependencies": {
@@ -32,9 +29,7 @@
     "serverless": "^3.22.0",
     "serverless-offline": "^8.8.1",
     "serverless-webpack": "^5.10.0",
-    "terser-webpack-plugin": "^5.3.6",
     "ts-jest": "^28.0.8",
-    "ts-loader": "^9.4.1",
     "typescript": "^4.8.4",
     "webpack": "^5.74.0"
   }
