@@ -1,5 +1,5 @@
-import { MedicapReleaseRepository } from "./medicap-release-repository";
-import { MedicapRelease } from "../entity/medicap-release";
+import { MedicapReleaseRepository } from "../medicap-release-repository";
+import { MedicapRelease } from "../../entity/medicap-release";
 import { dynamoDbClient } from "@package/dynamodb-client";
 
 export class DynamoDBMedicapReleaseRepository

@@ -1,8 +1,8 @@
-import { DynamoDBMedicapBookingRepository } from "./dynamodb-medicap-booking-repository";
-import { DynamoDBMedicapPreBookingRepository } from "./dynamodb-medicap-pre-booking-repository";
-import { DynamoDBMedicapReleaseRepository } from "./dynamodb-medicap-release-repository";
-import { DynamoDBMedicapCalendarRepository } from "./dynamodb-medicap-calendar-repository";
-import { DynamoDBMedicapExceptionRepository } from "./dynamodb-medicap-exception-repository";
+import { DynamoDBMedicapBookingRepository } from "./dynamodb/dynamodb-medicap-booking-repository";
+import { DynamoDBMedicapPreBookingRepository } from "./dynamodb/dynamodb-medicap-pre-booking-repository";
+import { DynamoDBMedicapReleaseRepository } from "./dynamodb/dynamodb-medicap-release-repository";
+import { DynamoDBMedicapCalendarRepository } from "./dynamodb/dynamodb-medicap-calendar-repository";
+import { DynamoDBMedicapExceptionRepository } from "./dynamodb/dynamodb-medicap-exception-repository";
 
 const medicapBookingRepository = new DynamoDBMedicapBookingRepository();
 const medicapPreBookingRepository = new DynamoDBMedicapPreBookingRepository();

@@ -1,5 +1,5 @@
-import { MedicapCalendarRepository } from "./medicap-calendar-repository";
-import { MedicapCalendar } from "../entity/medicap-calendar";
+import { MedicapCalendarRepository } from "../medicap-calendar-repository";
+import { MedicapCalendar } from "../../entity/medicap-calendar";
 import { dynamoDbClient } from "@package/dynamodb-client";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 
