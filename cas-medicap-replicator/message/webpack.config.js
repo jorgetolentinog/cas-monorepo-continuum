@@ -1,1 +1,1 @@
-module.exports = require('@package/webpack-config')
+module.exports = require('@package/serverless-webpack-config')

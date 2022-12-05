@@ -1,5 +1,5 @@
 {
-  "name": "@package/webpack-config",
+  "name": "@package/serverless-webpack-config",
   "version": "0.0.0",
   "private": true,
   "main": "index.js",

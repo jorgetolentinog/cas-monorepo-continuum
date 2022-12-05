@@ -24,7 +24,7 @@
     "@package/eslint-config": "workspace:^0.0.0",
     "@package/prettier-config": "workspace:^0.0.0",
     "@package/tsconfig": "workspace:*",
-    "@package/webpack-config": "workspace:^0.0.0",
+    "@package/serverless-webpack-config": "workspace:^0.0.0",
     "@types/aws-lambda": "^8.10.106",
     "@types/node": "^18.11.10",
     "@types/uuid": "^8.3.4",

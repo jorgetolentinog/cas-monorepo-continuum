@@ -15,8 +15,8 @@ importers:
       '@package/lambda-apigateway-wrapper': workspace:^0.0.0
       '@package/metrics': workspace:^0.0.0
       '@package/prettier-config': workspace:^0.0.0
+      '@package/serverless-webpack-config': workspace:^0.0.0
       '@package/tsconfig': workspace:*
-      '@package/webpack-config': workspace:^0.0.0
       '@types/aws-lambda': ^8.10.106
       '@types/node': ^18.11.10
       '@types/uuid': ^8.3.4
@@ -45,8 +45,8 @@ importers:
       '@nearst/serverless-dynalite': 2.0.4_aws-sdk@2.1259.0
       '@package/eslint-config': link:../../package/eslint-config
       '@package/prettier-config': link:../../package/prettier-config
+      '@package/serverless-webpack-config': link:../../package/serverless-webpack-config
       '@package/tsconfig': link:../../package/tsconfig
-      '@package/webpack-config': link:../../package/webpack-config
       '@types/aws-lambda': 8.10.109
       '@types/node': 18.11.10
       '@types/uuid': 8.3.4
@@ -73,8 +73,8 @@ importers:
       '@package/jest-config': workspace:^0.0.0
       '@package/lambda-apigateway-wrapper': workspace:^0.0.0
       '@package/lambda-eventbridge-wrapper': workspace:^0.0.0
+      '@package/serverless-webpack-config': workspace:^0.0.0
       '@package/tsconfig': workspace:^0.0.0
-      '@package/webpack-config': workspace:^0.0.0
       '@types/aws-lambda': ^8.10.106
       '@types/jest': ^28.1.8
       '@types/node': ^18.11.10
@@ -97,8 +97,8 @@ importers:
     devDependencies:
       '@nearst/serverless-dynalite': 2.0.4_aws-sdk@2.1259.0
       '@package/jest-config': link:../../package/jest-config
+      '@package/serverless-webpack-config': link:../../package/serverless-webpack-config
       '@package/tsconfig': link:../../package/tsconfig
-      '@package/webpack-config': link:../../package/webpack-config
       '@types/aws-lambda': 8.10.109
       '@types/jest': 28.1.8
       '@types/node': 18.11.10
@@ -248,10 +248,7 @@ importers:
   package/prettier-config:
     specifiers: {}
 
-  package/tsconfig:
-    specifiers: {}
-
-  package/webpack-config:
+  package/serverless-webpack-config:
     specifiers:
       '@types/node': ^18.11.10
       serverless: ^3.22.0
@@ -268,6 +265,9 @@ importers:
       ts-loader: 9.4.2_vfotqvx6lgcbf3upbs6hgaza4q
       typescript: 4.9.3
       webpack: 5.75.0
+
+  package/tsconfig:
+    specifiers: {}
 
 packages:
 
