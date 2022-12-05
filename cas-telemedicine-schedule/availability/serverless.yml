@@ -1,4 +1,5 @@
-service: cas-agd-tlmdcn-availability
+app: telemedicine-schedule
+service: telemedicine-schedule-availability
 useDotenv: true
 
 plugins:
@@ -13,8 +14,8 @@ provider:
     SERVICE_NAME: ${self:service}
     DYNAMODB_TABLE: ${self:service}-${sls:stage}-table
   apiGateway:
-    restApiId: ${self:custom.cas-agd-tlmdcn.ApiGatewayRestApiId}
-    restApiRootResourceId: ${self:custom.cas-agd-tlmdcn.ApiGatewayRestApiRootResourceId}
+    restApiId: ${self:custom.resource.ApiGatewayRestApiId}
+    restApiRootResourceId: ${self:custom.resource.ApiGatewayRestApiRootResourceId}
   tracing:
     lambda: true
   iam:
@@ -31,18 +32,18 @@ provider:
           Resource: "*"
 
 custom:
-  cas-agd-tlmdcn:
+  resource:
     ApiGatewayRestApiId:
-      "Fn::ImportValue": cas-agd-tlmdcn-${sls:stage}-ApiGatewayRestApiId
+      "Fn::ImportValue": ${self:app}-resource-${sls:stage}-ApiGatewayRestApiId
     ApiGatewayRestApiRootResourceId:
-      "Fn::ImportValue": cas-agd-tlmdcn-${sls:stage}-ApiGatewayRestApiRootResourceId
-  cas-medicap:
+      "Fn::ImportValue": ${self:app}-resource-${sls:stage}-ApiGatewayRestApiRootResourceId
+  cas-medicap-replicator:
     EventBusName:
-      "Fn::ImportValue": cas-medicap-${sls:stage}-EventBusName
+      "Fn::ImportValue": medicap-replicator-resource-${sls:stage}-EventBusName
 
 functions:
   httpAvailabilityProfessionalGet:
-    handler: ./src/infrastructure/lambda/http-availability-professional-get/index.handler
+    handler: ./src/handler/http-availability-professional-get/index.handler
     events:
       - http:
           path: /availability/professional/{professionalId}
@@ -50,57 +51,57 @@ functions:
           cors: true
 
   eventMedicapBookingSynced:
-    handler: ./src/infrastructure/lambda/event-medicap-booking-synced/index.handler
+    handler: ./src/handler/event-medicap-booking-synced/index.handler
     events:
       - eventBridge:
-          eventBus: ${self:custom.cas-medicap.EventBusName}
+          eventBus: ${self:custom.cas-medicap-replicator.EventBusName}
           pattern:
             source:
-              - cas-medicap-sync
+              - medicap-replicator-message
             detail-type:
               - booking.updated
 
   eventMedicapPreBookingSynced:
-    handler: ./src/infrastructure/lambda/event-medicap-pre-booking-synced/index.handler
+    handler: ./src/handler/event-medicap-pre-booking-synced/index.handler
     events:
       - eventBridge:
-          eventBus: ${self:custom.cas-medicap.EventBusName}
+          eventBus: ${self:custom.cas-medicap-replicator.EventBusName}
           pattern:
             source:
-              - cas-medicap-sync
+              - medicap-replicator-message
             detail-type:
               - pre-booking.updated
 
   eventMedicapReleaseSynced:
-    handler: ./src/infrastructure/lambda/event-medicap-release-synced/index.handler
+    handler: ./src/handler/event-medicap-release-synced/index.handler
     events:
       - eventBridge:
-          eventBus: ${self:custom.cas-medicap.EventBusName}
+          eventBus: ${self:custom.cas-medicap-replicator.EventBusName}
           pattern:
             source:
-              - cas-medicap-sync
+              - medicap-replicator-message
             detail-type:
               - release.updated
 
   eventMedicapCalendarSynced:
-    handler: ./src/infrastructure/lambda/event-medicap-calendar-synced/index.handler
+    handler: ./src/handler/event-medicap-calendar-synced/index.handler
     events:
       - eventBridge:
-          eventBus: ${self:custom.cas-medicap.EventBusName}
+          eventBus: ${self:custom.cas-medicap-replicator.EventBusName}
           pattern:
             source:
-              - cas-medicap-sync
+              - medicap-replicator-message
             detail-type:
               - calendar.updated
 
   eventMedicapExceptionSynced:
-    handler: ./src/infrastructure/lambda/event-medicap-exception-synced/index.handler
+    handler: ./src/handler/event-medicap-exception-synced/index.handler
     events:
       - eventBridge:
-          eventBus: ${self:custom.cas-medicap.EventBusName}
+          eventBus: ${self:custom.cas-medicap-replicator.EventBusName}
           pattern:
             source:
-              - cas-medicap-sync
+              - medicap-replicator-message
             detail-type:
               - exception.updated
 
