@@ -1,6 +1,9 @@
 # node
 node_modules
 
+# test
+coverage
+
 # ignore all hidden files
 .*
 # except
