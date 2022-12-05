@@ -10,5 +10,4 @@ module.exports = {
   resetMocks: true,
   restoreMocks: true,
   transform: jsWithTs.transform,
-  // collectCoverageFrom: ["src/**"],
 };
