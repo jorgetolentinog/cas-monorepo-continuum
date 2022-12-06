@@ -1,5 +1,5 @@
-app: cas-telemedicine-schedule
-service: ${self:app}-resource
+app: cas-tlmdcn-schdl
+service: ${self:app}-rsrc
 useDotenv: true
 
 provider:

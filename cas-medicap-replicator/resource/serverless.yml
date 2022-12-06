@@ -1,5 +1,5 @@
-app: cas-medicap-replicator
-service: ${self:app}-resource
+app: cas-mdcp-rplctr
+service: ${self:app}-rsrc
 useDotenv: true
 
 provider:

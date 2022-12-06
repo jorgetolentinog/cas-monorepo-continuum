@@ -4,6 +4,8 @@
   "scripts": {
     "start": "serverless offline start",
     "ts-check": "tsc --noEmit",
+    "deploy": "serverless deploy",
+    "remove": "serverless remove",
     "test": "jest --verbose --runInBand",
     "test:coverage": "jest --verbose --runInBand --coverage"
   },

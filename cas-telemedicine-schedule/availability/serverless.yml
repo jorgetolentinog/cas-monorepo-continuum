@@ -1,5 +1,5 @@
-app: telemedicine-schedule
-service: telemedicine-schedule-availability
+app: cas-tlmdcn-schdl
+service: ${self:app}-vlblt
 useDotenv: true
 
 plugins:
@@ -34,12 +34,12 @@ provider:
 custom:
   resource:
     ApiGatewayRestApiId:
-      "Fn::ImportValue": ${self:app}-resource-${sls:stage}-ApiGatewayRestApiId
+      "Fn::ImportValue": ${self:app}-rsrc-${sls:stage}-ApiGatewayRestApiId
     ApiGatewayRestApiRootResourceId:
-      "Fn::ImportValue": ${self:app}-resource-${sls:stage}-ApiGatewayRestApiRootResourceId
-  cas-medicap-replicator:
+      "Fn::ImportValue": ${self:app}-rsrc-${sls:stage}-ApiGatewayRestApiRootResourceId
+  cas-medicap-replicator-resource:
     EventBusName:
-      "Fn::ImportValue": medicap-replicator-resource-${sls:stage}-EventBusName
+      "Fn::ImportValue": cas-mdcp-rplctr-rsrc-${sls:stage}-EventBusName
 
 functions:
   httpAvailabilityProfessionalGet:
@@ -50,25 +50,25 @@ functions:
           method: get
           cors: true
 
-  eventMedicapBookingSynced:
+  eventMedicapBookingUpdated:
     handler: ./src/handler/event-medicap-booking-synced/index.handler
     events:
       - eventBridge:
-          eventBus: ${self:custom.cas-medicap-replicator.EventBusName}
+          eventBus: ${self:custom.cas-medicap-replicator-resource.EventBusName}
           pattern:
             source:
-              - medicap-replicator-message
+              - cas-mdcp-rplctr-mssg
             detail-type:
               - booking.updated
 
-  eventMedicapPreBookingSynced:
+  eventMedicapPreBookingUpdated:
     handler: ./src/handler/event-medicap-pre-booking-synced/index.handler
     events:
       - eventBridge:
-          eventBus: ${self:custom.cas-medicap-replicator.EventBusName}
+          eventBus: ${self:custom.cas-medicap-replicator-resource.EventBusName}
           pattern:
             source:
-              - medicap-replicator-message
+              - cas-mdcp-rplctr-mssg
             detail-type:
               - pre-booking.updated
 
@@ -76,10 +76,10 @@ functions:
     handler: ./src/handler/event-medicap-release-synced/index.handler
     events:
       - eventBridge:
-          eventBus: ${self:custom.cas-medicap-replicator.EventBusName}
+          eventBus: ${self:custom.cas-medicap-replicator-resource.EventBusName}
           pattern:
             source:
-              - medicap-replicator-message
+              - cas-mdcp-rplctr-mssg
             detail-type:
               - release.updated
 
@@ -87,10 +87,10 @@ functions:
     handler: ./src/handler/event-medicap-calendar-synced/index.handler
     events:
       - eventBridge:
-          eventBus: ${self:custom.cas-medicap-replicator.EventBusName}
+          eventBus: ${self:custom.cas-medicap-replicator-resource.EventBusName}
           pattern:
             source:
-              - medicap-replicator-message
+              - cas-mdcp-rplctr-mssg
             detail-type:
               - calendar.updated
 
@@ -98,10 +98,10 @@ functions:
     handler: ./src/handler/event-medicap-exception-synced/index.handler
     events:
       - eventBridge:
-          eventBus: ${self:custom.cas-medicap-replicator.EventBusName}
+          eventBus: ${self:custom.cas-medicap-replicator-resource.EventBusName}
           pattern:
             source:
-              - medicap-replicator-message
+              - cas-mdcp-rplctr-mssg
             detail-type:
               - exception.updated
 

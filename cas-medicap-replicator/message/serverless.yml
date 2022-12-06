@@ -1,5 +1,5 @@
-app: cas-medicap-replicator
-service: ${self:app}-message
+app: cas-mdcp-rplctr
+service: ${self:app}-mssg
 useDotenv: true
 
 plugins:
@@ -38,11 +38,11 @@ provider:
 custom:
   resource:
     ApiGatewayRestApiId:
-      'Fn::ImportValue': ${self:app}-resource-${sls:stage}-ApiGatewayRestApiId
+      'Fn::ImportValue': ${self:app}-rsrc-${sls:stage}-ApiGatewayRestApiId
     ApiGatewayRestApiRootResourceId:
-      'Fn::ImportValue': ${self:app}-resource-${sls:stage}-ApiGatewayRestApiRootResourceId
+      'Fn::ImportValue': ${self:app}-rsrc-${sls:stage}-ApiGatewayRestApiRootResourceId
     EventBusName:
-      'Fn::ImportValue': ${self:app}-resource-${sls:stage}-EventBusName
+      'Fn::ImportValue': ${self:app}-rsrc-${sls:stage}-EventBusName
   serverless-offline:
     reloadHandler: true
 
