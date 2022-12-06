@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "serverless offline start",
+    "ts-check": "tsc --noEmit",
     "test": "jest --verbose --runInBand",
     "test:coverage": "jest --verbose --runInBand --coverage"
   },

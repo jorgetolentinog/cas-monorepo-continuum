@@ -3,9 +3,13 @@
   "version": "0.0.0",
   "main": "./index.ts",
   "types": "./index.ts",
+  "scripts": {
+    "ts-check": "tsc --noEmit"
+  },
   "devDependencies": {
     "@package/tsconfig": "*",
     "@types/aws-lambda": "^8.10.109",
+    "@types/node": "^18.11.10",
     "typescript": "^4.8.4"
   },
   "dependencies": {

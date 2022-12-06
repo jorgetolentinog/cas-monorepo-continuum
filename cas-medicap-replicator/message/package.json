@@ -5,6 +5,7 @@
     "start": "serverless offline start",
     "prettier": "prettier --write .",
     "eslint": "npx eslint --ext .js,.ts --max-warnings 0 .",
+    "ts-check": "tsc --noEmit",
     "deployx": "npx serverless deploy",
     "removex": "npx serverless remove"
   },

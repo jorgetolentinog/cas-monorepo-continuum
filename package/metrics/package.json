@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "main": "./index.ts",
   "types": "./index.ts",
+  "scripts": {
+    "ts-check": "tsc --noEmit"
+  },
   "devDependencies": {
     "@package/tsconfig": "*",
     "@types/node": "^18.11.10",
