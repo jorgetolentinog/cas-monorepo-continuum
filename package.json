@@ -2,6 +2,7 @@
   "name": "cas-continuum-monorepo",
   "version": "0.0.0",
   "scripts": {
-    "deploy:resource": "pnpm -r deploy"
+    "deploy:resource": "pnpm --filter \"@cas-*/resource\" run deploy",
+    "deploy": "pnpm --filter \"!@cas-*/resource\" run deploy"
   }
 }

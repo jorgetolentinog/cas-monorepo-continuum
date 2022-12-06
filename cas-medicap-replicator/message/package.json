@@ -4,10 +4,10 @@
   "scripts": {
     "start": "serverless offline start",
     "prettier": "prettier --write .",
-    "eslint": "npx eslint --ext .js,.ts --max-warnings 0 .",
+    "eslint": "eslint --ext .js,.ts --max-warnings 0 .",
     "ts-check": "tsc --noEmit",
-    "deployx": "npx serverless deploy",
-    "removex": "npx serverless remove"
+    "deploy": "serverless deploy",
+    "remove": "serverless remove"
   },
   "dependencies": {
     "@package/dynamodb-client": "workspace:^0.0.0",

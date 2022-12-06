@@ -1,5 +1,5 @@
-app: medicap-replicator
-service: medicap-replicator-resource
+app: cas-medicap-replicator
+service: ${self:app}-resource
 useDotenv: true
 
 provider:
